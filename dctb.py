@@ -202,35 +202,6 @@ class DCTB(nn.Module):
         out_fused = input + out_fused1
         return out_fused
 
-'''class HBCT(nn.Module):
-    def __init__(self, in_channels, distillation_rate=0.25):
-        super(HBCT, self).__init__()
-        self.rc = self.remaining_channels = in_channels
-        self.c1_r = conv_layer(in_channels, self.rc, 3)
-        self.esa = ESA(in_channels, nn.Conv2d)
-        self.esa2 = ESA(in_channels, nn.Conv2d)
-        self.cca = CCALayer(in_channels)
-        self.cca1 = CCALayer(in_channels)
-        # self.sparatt = Spartial_Attention.Spartial_Attention()
-        self.swinT1 = SwinT.SwinT()
-        self.swinT2 = SwinT.SwinT()
-        #self.swinT3 = SwinT.SwinT()
-        #self.swinT4 = SwinT.SwinT()
-
-    def forward(self, input):
-        #input5 = self.esa2(input)
-        #input1 = self.cca(input5)
-        input1 = self.swinT1(input)
-        #input2 = self.esa2(input1)   #wywywyw
-        #input3 = self.cca(input2)    #wywywyw
-        input4 = self.swinT2(input1)
-        out_fused1 = self.c1_r(input4)
-        out_fused = input + out_fused1
-        #input3 = self.swinT3(input2)
-        #input4 = self.swinT4(input3)
-        #out_fused = self.cca1(self.esa(self.c1_r(input2)))
-        return out_fused'''
-
 
 def pixelshuffle_block(in_channels, out_channels, upscale_factor=2, kernel_size=3, stride=1):
     conv = conv_layer(in_channels, out_channels * (upscale_factor ** 2), kernel_size, stride)
